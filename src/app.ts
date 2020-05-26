@@ -22,7 +22,7 @@ class App {
     private running: boolean = false;
     private run() {
         const btn = document.createElement('button');
-        btn.innerText = 'Hello';
+        btn.innerText = 'Click me!';
         btn.addEventListener('click', ev => {
             alert('Hello, World!');
         });
