@@ -1,7 +1,7 @@
-import * as gulp from 'gulp';
-import * as path from 'path';
-import * as webpack from 'webpack-stream';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+const gulp = require('gulp');
+const path = require('path');
+const webpack = require('webpack-stream');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 function devbuild_for_cordova() {
     return gulp.src('src/index.ts')

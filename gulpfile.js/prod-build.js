@@ -1,13 +1,12 @@
-import * as gulp from 'gulp';
-import * as path from 'path';
-import * as webpack from 'webpack-stream';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+const gulp = require('gulp');
+const path = require('path');
+const webpack = require('webpack-stream');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-function devbuild() {
+function prodbuild() {
     return gulp.src('src/index.ts')
         .pipe(webpack({
-            mode: 'development',
-            devtool: "inline-source-map",
+            mode: 'production',
             entry: './src/index.ts',
             module: {
                 rules: [
@@ -34,4 +33,4 @@ function devbuild() {
         .pipe(gulp.dest('dist/'));
 }
 
-gulp.task('devbuild', devbuild);
+gulp.task('prodbuild', prodbuild);

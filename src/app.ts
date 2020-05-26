@@ -1,3 +1,4 @@
+import * as reactApp from './react-app';
 
 class App {
 
@@ -21,12 +22,7 @@ class App {
     private cordova: boolean = true;
     private running: boolean = false;
     private run() {
-        const btn = document.createElement('button');
-        btn.innerText = 'Click me!';
-        btn.addEventListener('click', ev => {
-            alert('Hello, World!');
-        });
-        document.body.appendChild(btn);
+        reactApp.main();
     }
     private onDeviceReady() {
         this.run();

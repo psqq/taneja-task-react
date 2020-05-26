@@ -1,12 +1,12 @@
-import * as gulp from 'gulp';
-import * as webpack from 'webpack';
-import * as WebpackDevServer from 'webpack-dev-server';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
-import * as path from 'path';
+const gulp = require('gulp');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackDevServer = require('webpack-dev-server');
 
 const PORT = 8088;
 
-gulp.task("webpack-dev-server", function (callback) {
+gulp.task("webpack-dev-server", function () {
     // Start a webpack-dev-server
     var compiler = webpack({
         mode: 'development',

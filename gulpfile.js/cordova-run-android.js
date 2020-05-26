@@ -1,5 +1,5 @@
-import * as gulp from 'gulp';
-import * as shell from 'gulp-shell';
+const gulp = require('gulp');
+const shell = require('gulp-shell');
 
 gulp.task('just-cordova-run-android', shell.task('cordova run android', {
     cwd: 'cordova-src'
