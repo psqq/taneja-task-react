@@ -10,3 +10,9 @@ gulp.task('cordova-run-android', gulp.series(
     'devbuild-for-cordova',
     'just-cordova-run-android',
 ));
+
+gulp.task('cordova-prod-run-android', gulp.series(
+    'cordova-clean',
+    'prodbuild-for-cordova',
+    'just-cordova-run-android',
+));
