@@ -3,11 +3,12 @@ import * as path from 'path';
 import * as webpack from 'webpack-stream';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
-export function prodbuild() {
+export function devbuild_for_cordova() {
     return gulp.src('src/index.ts')
         .pipe(webpack({
-            mode: 'production',
-            entry: './src/index.ts',
+            mode: 'development',
+            devtool: "inline-source-map",
+            entry: './src/index.cordova.ts',
             module: {
                 rules: [
                     {
@@ -26,9 +27,9 @@ export function prodbuild() {
             },
             plugins: [
                 new HtmlWebpackPlugin({
-                    template: path.resolve(__dirname, '../src/assets/index.html')
+                    template: path.resolve(__dirname, '../src/assets/index.cordova.html')
                 })
             ]
         }))
-        .pipe(gulp.dest('dist/'));
+        .pipe(gulp.dest('cordova-src/www'));
 }

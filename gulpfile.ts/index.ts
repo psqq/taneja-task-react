@@ -1,5 +1,9 @@
-export * from './dev-build';
-export * from './prod-build';
-import { devbuild } from './dev-build';
+// All tasks
+export { devbuild } from './dev-build';
+export { prodbuild } from './prod-build';
+export { devbuild_for_cordova } from './dev-build-for-cordova';
+export { cordova_clean } from './cordova-clean';
 
+// Default task
+import { devbuild } from './dev-build';
 export default devbuild;

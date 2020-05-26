@@ -7,9 +7,15 @@ export function devbuild() {
     return gulp.src('src/index.ts')
         .pipe(webpack({
             mode: 'development',
+            devtool: "inline-source-map",
             entry: './src/index.ts',
             module: {
                 rules: [
+                    {
+                        test: /\.ts?$/,
+                        use: 'ts-loader',
+                        exclude: /node_modules/,
+                    },
                 ],
             },
             resolve: {
