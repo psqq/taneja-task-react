@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as webpack from 'webpack-stream';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
-export function devbuild() {
+function devbuild() {
     return gulp.src('src/index.ts')
         .pipe(webpack({
             mode: 'development',
@@ -33,3 +33,5 @@ export function devbuild() {
         }))
         .pipe(gulp.dest('dist/'));
 }
+
+gulp.task('devbuild', devbuild);

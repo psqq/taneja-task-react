@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as webpack from 'webpack-stream';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
-export function devbuild_for_cordova() {
+function devbuild_for_cordova() {
     return gulp.src('src/index.ts')
         .pipe(webpack({
             mode: 'development',
@@ -33,3 +33,5 @@ export function devbuild_for_cordova() {
         }))
         .pipe(gulp.dest('cordova-src/www'));
 }
+
+gulp.task('devbuild-for-cordova', devbuild_for_cordova);

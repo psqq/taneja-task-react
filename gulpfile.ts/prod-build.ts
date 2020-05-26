@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as webpack from 'webpack-stream';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
-export function prodbuild() {
+function prodbuild() {
     return gulp.src('src/index.ts')
         .pipe(webpack({
             mode: 'production',
@@ -32,3 +32,5 @@ export function prodbuild() {
         }))
         .pipe(gulp.dest('dist/'));
 }
+
+gulp.task('prodbuild', prodbuild);

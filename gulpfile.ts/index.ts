@@ -1,9 +1,10 @@
 // All tasks
-export { devbuild } from './dev-build';
-export { prodbuild } from './prod-build';
-export { devbuild_for_cordova } from './dev-build-for-cordova';
-export { cordova_clean } from './cordova-clean';
+import './dev-build';
+import './prod-build';
+import './cordova-clean';
+import './dev-build-for-cordova';
+import './cordova-run-android';
 
 // Default task
-import { devbuild } from './dev-build';
-export default devbuild;
+import * as gulp from 'gulp';
+gulp.task('default', gulp.series('devbuild'));
