@@ -31,11 +31,21 @@ const useStyles = createUseStyles({
     }
 });
 
+/**
+ * Makes intervals.
+ * start - b1; a2 - b2; ...; a_n - b_n; a_n+1 - maxValue; maxValue+1 - end;
+ * Exmaple 1, 20, 2, 7:
+ *      1 - 2; 3 - 4; 5 - 6; 7 - 7; 8 - 20.
+ * @param start 
+ * @param end 
+ * @param interval 
+ * @param maxValue 
+ */
 function* getIntervals(start: number, end: number, interval: number, maxValue: number) {
     if (start > end && interval > 0) {
         return;
     }
-    if (!interval) {
+    if (interval <= 0) {
         return;
     }
     if (maxValue > end) {
@@ -54,13 +64,20 @@ function* getIntervals(start: number, end: number, interval: number, maxValue: n
         }
         yield { from, to };
         if (to == maxValue) {
+            if (to < end) {
+                yield { from: to + 1, to: end };
+            }
             break;
         }
         from = to + 1;
     }
 }
 
-export function LevelsViewer() {
+export interface LevelsViewerProps {
+    onSelectLevel?: (level: number) => void;
+}
+
+export const LevelsViewer: React.FunctionComponent<LevelsViewerProps> = (props) => {
     const classes = useStyles();
     const MAX_LEVEL = 11111;
     const [state, setState] = React.useState({
@@ -70,6 +87,7 @@ export function LevelsViewer() {
     });
     const onClick = (from: number, to: number) => {
         if (state.interval <= 1) {
+            props.onSelectLevel(from);
             return;
         }
         let maxValue = MAX_LEVEL;
