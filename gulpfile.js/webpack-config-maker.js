@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const TerserPlugin = require('terser-webpack-plugin');
 
 function makeWebpackConfig({ dev = true, cordova = false }) {
     const config = {
@@ -46,6 +47,10 @@ function makeWebpackConfig({ dev = true, cordova = false }) {
     if (dev) {
         config.mode = 'development';
         config.devtool = "inline-source-map";
+        // config.optimization = {
+        //     minimize: true,
+        //     minimizer: [new TerserPlugin()],
+        // };
     } else {
         config.mode = 'production';
     }

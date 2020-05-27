@@ -5,8 +5,13 @@
   "author": "psqq",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "dev": "gulp webpack-dev-server"
+  },
   "dependencies": {
+    "@testing-library/react": "^10.0.4",
     "@types/gulp": "^4.0.6",
+    "@types/jest": "^25.2.3",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/webpack-stream": "^3.2.11",
@@ -14,9 +19,13 @@
     "gulp-clean": "^0.4.0",
     "gulp-shell": "^0.8.0",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "source-map-loader": "^0.2.4",
+    "terser-webpack-plugin": "^3.0.2",
+    "ts-jest": "^26.0.0",
     "ts-loader": "^7.0.5",
     "ts-node": "^8.10.1",
     "typescript": "^3.9.3",
