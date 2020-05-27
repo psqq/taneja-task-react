@@ -15,9 +15,18 @@ export interface LevelPreviewProps {
 
 export const LevelPreview: React.FunctionComponent<LevelPreviewProps> = (props) => {
     const classes = useStyles();
+    let text = "" + props.from;
+    if (props.to != props.from) {
+        text += ' - ';
+        if (props.to === Infinity) {
+            text += '∞';
+        } else {
+            text += props.to;
+        }
+    }
     return (
         <div className={props.className} onClick={props.onClick}>
-            {props.from} - {props.to === Infinity ? '∞' : props.to}
+            {text}
         </div>
     );
 }
