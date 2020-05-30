@@ -1,16 +1,26 @@
 import * as React from "react";
-import { LevelPreview } from "./LevelPreview";
 import { createUseStyles } from "react-jss";
+import * as math from "mathjs";
 
 const useStyles = createUseStyles({
-  expr: {
+  container: {
     position: "fixed",
+    display: "grid",
+    top: "45vh",
+    left: 0,
+  },
+  expr: {
     outline: 0,
     borderStyle: "none",
-    width: "100vw",
     textAlign: "center",
-    bottom: "50vh",
+    width: "100vw",
+    left: 0,
     fontSize: 30,
+  },
+  result: {
+    fontSize: 30,
+    paddingTop: "50px",
+    paddingLeft: "50px",
   },
 });
 
@@ -29,7 +39,16 @@ export const Expr: React.FunctionComponent<Props> = ({
     ref.current.focus();
     ref.current.setSelectionRange(cursorPosition, cursorPosition);
   });
+  const result = math.evaluate(value) || 0;
   return (
-    <input className={classes.expr} type="text" value={value} ref={ref}></input>
+    <div className={classes.container}>
+      <input
+        className={classes.expr}
+        type="text"
+        value={value}
+        ref={ref}
+      ></input>
+      <div className={classes.result}>= {result}</div>
+    </div>
   );
 };
