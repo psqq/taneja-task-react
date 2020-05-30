@@ -36,8 +36,17 @@ export const Expr: React.FunctionComponent<Props> = ({
   const classes = useStyles();
   const ref = React.createRef<HTMLInputElement>();
   React.useEffect(() => {
-    ref.current.focus();
-    ref.current.setSelectionRange(cursorPosition, cursorPosition);
+    const el = ref.current;
+    el.focus();
+    el.setSelectionRange(cursorPosition, cursorPosition);
+    function onFocusOut(e: FocusEvent) {
+      e.preventDefault();
+      el.focus();
+    }
+    el.addEventListener("focusout", onFocusOut);
+    return () => {
+      el.removeEventListener("focusout", onFocusOut);
+    };
   });
   const result = math.evaluate(value) || 0;
   return (
